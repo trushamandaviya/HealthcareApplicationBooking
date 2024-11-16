@@ -1,9 +1,6 @@
 ﻿using HC.Core.Admin.Interfaces;
-using HC.Core.Helpers;
 using HC.Core.Models;
-using HC.DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace HC.API.Area.Admin.Controllers
 {

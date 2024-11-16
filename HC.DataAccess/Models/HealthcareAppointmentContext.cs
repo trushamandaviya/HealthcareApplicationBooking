@@ -135,10 +135,10 @@ public partial class HealthcareAppointmentContext : DbContext
 
             entity.ToTable("users", tb => tb.HasComment("Users who can book appointment"));
 
+            entity.HasIndex(e => e.Email, "email_UNIQUE").IsUnique();
+
             entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.Email)
-                .HasMaxLength(255)
-                .HasColumnName("email");
+            entity.Property(e => e.Email).HasColumnName("email");
             entity.Property(e => e.Name)
                 .HasMaxLength(45)
                 .HasColumnName("name");
