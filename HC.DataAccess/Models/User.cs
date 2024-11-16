@@ -1,0 +1,15 @@
+﻿namespace HC.DataAccess.Models;
+
+/// <summary>
+/// Users who can book appointment
+/// </summary>
+public partial class User
+{
+    public int UserId { get; set; }
+
+    public string Name { get; set; } = null!;
+
+    public string? Email { get; set; }
+
+    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
+}

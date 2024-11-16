@@ -8,7 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+	  <ProjectReference Include="..\HC.DataAccess\HC.DataAccess.csproj" />
+	  <ProjectReference Include="..\HC.Core\HC.Core.csproj" />
   </ItemGroup>
 
 </Project>
