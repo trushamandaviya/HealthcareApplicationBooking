@@ -142,6 +142,9 @@ public partial class HealthcareAppointmentContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(45)
                 .HasColumnName("name");
+            entity.Property(e => e.Password)
+                .HasMaxLength(255)
+                .HasColumnName("password");
         });
 
         OnModelCreatingPartial(modelBuilder);
