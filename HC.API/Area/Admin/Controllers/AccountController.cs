@@ -25,5 +25,13 @@ namespace HC.API.Area.Admin.Controllers
             var token = await _accountService.RegisterUserAsync(model);
             return Ok(new { Token = token });            
         }
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        {
+            var token = await _accountService.LoginAsync(model);
+            return Ok(new { Token = token });            
+        }
     }
 }

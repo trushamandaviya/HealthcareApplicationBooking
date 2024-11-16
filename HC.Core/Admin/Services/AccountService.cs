@@ -47,8 +47,33 @@ namespace HC.Core.Admin.Services
             await _context.SaveChangesAsync();
 
             // Generate JWT token
+            return _jwtHelper.GenerateToken(user.UserId.ToString(), user.Email);            
+        }
+
+        [HttpPost]
+        public async Task<string> LoginAsync(LoginModel model)
+        {
+            // Validate inputs
+            if (string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password))
+            {
+                throw new ArgumentException("Email and password are required.");
+            }
+
+            // Find user by email
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null)
+            {
+                throw new InvalidOperationException("Invalid email or password.");
+            }
+
+            // Verify password
+            if (!BCrypt.Net.BCrypt.Verify(model.Password, user.Password))
+            {
+                throw new InvalidOperationException("Invalid email or password.");
+            }
+
+            // Generate JWT token
             return _jwtHelper.GenerateToken(user.UserId.ToString(), user.Email);
-            
         }
     }
 }
