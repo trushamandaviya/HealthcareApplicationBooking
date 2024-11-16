@@ -17,7 +17,7 @@ namespace HC.API.Area.Admin.Controllers
         }
 
         //[Authorize] // Ensures this endpoint is accessible only to authenticated users
-        [HttpPost]
+        [HttpGet]
         [Route("GetHealthcareProfessionals")]
         public async Task<IActionResult> GetHealthcareProfessionals()
         {
