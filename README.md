@@ -308,3 +308,18 @@ Security:
     Use a strong secret for JwtSettings.Key.
     Use HTTPS in production.
     Store sensitive data (e.g., connection strings) in environment variables or a secure vault.
+
+Improvements can be done:    
+
+    -> We can send email or message to the user and healthcare professional at the time of appointment booking or any changes done in the status of the appointment.
+    -> That requires to update DB table to store email of professional.
+    -> We can provide UI for all the functionalities which can call this API
+
+Limittations of this repository:
+
+    -> I have added and configured all the logic for JWT token validation before accessing any API. 
+    -> At the time of Registration and Login, API creates and sends proper JWT token as response.
+    -> But somehow, token is not getting validated before accessing any API. 
+    -> I have checked that issuer, audience, secretKey everything is proper and even if I parse the token via https://jwt.io/, it is valid token.
+    -> Even though token is valid, it is throws Bearer error="invalid_token"
+    
