@@ -28,12 +28,13 @@ namespace HC.Core.Helpers
                 new Claim(JwtRegisteredClaimNames.Email, email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+            var expirationTime = DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"]));
 
             var token = new JwtSecurityToken(
                 issuer: jwtSettings["Issuer"],
                 audience: jwtSettings["Audience"],
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(double.Parse(jwtSettings["ExpiryMinutes"])),
+                expires: expirationTime,
                 signingCredentials: credentials
             );
 

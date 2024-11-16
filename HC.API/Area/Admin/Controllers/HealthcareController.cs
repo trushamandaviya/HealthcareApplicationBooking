@@ -1,5 +1,6 @@
 ﻿using HC.Core.Admin.Interfaces;
 using HC.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HC.API.Area.Admin.Controllers
@@ -16,7 +17,7 @@ namespace HC.API.Area.Admin.Controllers
         }
 
         //[Authorize] // Ensures this endpoint is accessible only to authenticated users
-        [HttpGet]
+        [HttpPost]
         [Route("GetHealthcareProfessionals")]
         public async Task<IActionResult> GetHealthcareProfessionals()
         {
@@ -24,6 +25,7 @@ namespace HC.API.Area.Admin.Controllers
             return Ok(professionals);            
         }
 
+        //[Authorize] // Ensures this endpoint is accessible only to authenticated users
         [HttpPost]
         [Route("BookAppointment")]
         public async Task<IActionResult> BookAppointment([FromBody] AppointmentBookingModel model)
@@ -33,6 +35,7 @@ namespace HC.API.Area.Admin.Controllers
             
         }
 
+        //[Authorize] // Ensures this endpoint is accessible only to authenticated users
         [HttpGet("User/{userId}/Appointments")]
         public async Task<IActionResult> GetUserAppointments(int userId)
         {
@@ -44,6 +47,7 @@ namespace HC.API.Area.Admin.Controllers
             return Ok(appointments);            
         }
 
+        //[Authorize] // Ensures this endpoint is accessible only to authenticated users
         [HttpPost("CancelAppointment")]
         public async Task<IActionResult> CancelAppointment(AppointmentCancelModel appointmentCancelModel)
         {             
